@@ -81,9 +81,9 @@ artifacts {
     archives sourcesJar
 }
 Properties properties = new Properties()
-File gradle_properties = project.file('gradle.properties');
+File gradle_properties = project.file('local.properties');
 if (gradle_properties.exists()) {
-    properties.load(project.file('gradle.properties').newDataInputStream())
+    properties.load(project.file('local.properties').newDataInputStream())
 }
 bintray {
     user = properties.getProperty("bintray.user")
@@ -91,7 +91,7 @@ bintray {
     configurations = ['archives']
     pkg {
         repo = "maven"
-        name = "SwipeBackLayout"
+        name = "library"
         websiteUrl = siteUrl
         vcsUrl = gitUrl
         licenses = ["Apache-2.0"]
