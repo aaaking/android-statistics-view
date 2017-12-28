@@ -81,9 +81,9 @@ artifacts {
     archives sourcesJar
 }
 Properties properties = new Properties()
-File gradle_properties = project.file('local.properties');
+File gradle_properties = project.rootProject.file('local.properties');
 if (gradle_properties.exists()) {
-    properties.load(project.file('local.properties').newDataInputStream())
+    properties.load(project.rootProject.file('local.properties').newDataInputStream())
 }
 bintray {
     user = properties.getProperty("bintray.user")
