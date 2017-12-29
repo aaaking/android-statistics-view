@@ -6,6 +6,10 @@ import com.statistics.library.line_chart.data.DataEntity
 /**
  * Created by 周智慧 on 28/12/2017.
  */
+
+/**
+ * 找出点列表最大的值，根据最大值决定纵向文案的宽度
+ */
 fun max(dataList: List<DataEntity>?): Int {
     var maxValue = 0
     if (dataList == null || dataList.isEmpty()) {
@@ -18,6 +22,9 @@ fun max(dataList: List<DataEntity>?): Int {
     return maxValue
 }
 
+/**
+ * 计算出纵坐标最大值、纵坐标每段的值，两者都是VALUE_RESIDUAL(默认5)的倍数
+ */
 fun getRightValue(value: Int): Int {
     var temp = value
     while (!isRightValue(temp)) {
@@ -26,10 +33,16 @@ fun getRightValue(value: Int): Int {
     return temp
 }
 
+/**
+ * 是VALUE_RESIDUAL(默认5)的倍数
+ */
 fun isRightValue(value: Int): Boolean {
     return value % VALUE_RESIDUAL == 0
 }
 
+/**
+ * 计算点的X坐标
+ */
 fun getCoordinateX(offset: Int, width: Int, index: Int, numOfPoint: Int, leftOffset: Int): Int {
     val widthCorrected = width - offset
     val partWidth = widthCorrected / (numOfPoint - 1)
@@ -45,6 +58,9 @@ fun getCoordinateX(offset: Int, width: Int, index: Int, numOfPoint: Int, leftOff
     return coordinate
 }
 
+/**
+ * 计算点的Y坐标
+ */
 fun getCoordinateY(height: Int, heightOffset: Int, value: Float): Int {
     val heightCorrected = height - heightOffset
     var coordinate = (heightCorrected - value).toInt()
