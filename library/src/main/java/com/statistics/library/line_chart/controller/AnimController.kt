@@ -29,12 +29,15 @@ class AnimController(view: LineChartView) {
         animatorSet.start()
     }
 
+    /**
+     * 包含三个子动画：alpha动画、x动画、y动画
+     */
     private fun createAnimator(drawData: DataEntity): ValueAnimator? {
         var duration = ANIMATION_DURATION.toLong()
-        if (drawData.stopX <= -1) {
+        if (drawData.stopX <= -1) {//表示是最后一个点，那么x动画、y动画都指向自己
             drawData.stopX = drawData.startX
         }
-        if (drawData.stopY <= -1) {
+        if (drawData.stopY <= -1) {//表示是最后一个点，那么x动画、y动画都指向自己
             drawData.stopY = drawData.startY
         }
         val propertyX = PropertyValuesHolder.ofInt(PROPERTY_X, drawData.startX, drawData.stopX)
