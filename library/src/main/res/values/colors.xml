@@ -20,4 +20,5 @@
     <color name="bg_club_my_end">#9D7B3C</color>
     <color name="bg_club_other_start">#4CB5CE</color>
     <color name="bg_club_other_end">#2F6071</color>
+    <color name="login_solid_color">#39BDCC</color>
 </resources>

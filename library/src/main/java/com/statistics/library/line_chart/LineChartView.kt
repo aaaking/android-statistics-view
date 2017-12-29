@@ -4,6 +4,7 @@ import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
+import android.support.v4.content.ContextCompat
 import android.util.AttributeSet
 import android.view.View
 import com.statistics.library.R
@@ -41,8 +42,11 @@ class LineChartView : View {
     lateinit var frameLinePaint: Paint
     lateinit var frameInternalPaint: Paint
     lateinit var linePaint: Paint
+    var linePaintColor: Int = 0
     lateinit var strokePaint: Paint
+    var strokePaintColor: Int = 0
     lateinit var fillPaint: Paint
+    var fillPaintColor: Int = 0
     @JvmOverloads constructor(context: Context) : this(context, null)
     @JvmOverloads constructor(context: Context, attributeSet: AttributeSet?) : this(context, attributeSet, 0)
     @JvmOverloads constructor(context: Context, attributeSet: AttributeSet?, defStyleAttr: Int) : super(context, attributeSet, defStyleAttr) {
@@ -53,6 +57,7 @@ class LineChartView : View {
     fun init(context: Context, attributeSet: AttributeSet?, defStyleAttr: Int) {
         test()
         val res = context.resources
+        getStuffFromXml(attributeSet)
         mDrawController = DrawController(this)
         mAnimController = AnimController(this)
         heightOffset = (res.getDimension(R.dimen.radius) + res.getDimension(R.dimen.line_width)).toInt()
@@ -79,18 +84,18 @@ class LineChartView : View {
         linePaint = Paint()
         linePaint.isAntiAlias = true
         linePaint.strokeWidth = res.getDimension(R.dimen.line_width)
-        linePaint.color = res.getColor(R.color.blue)
+        linePaint.color = linePaintColor
         //
         strokePaint = Paint()
         strokePaint.style = Paint.Style.STROKE
         strokePaint.isAntiAlias = true
         strokePaint.strokeWidth = res.getDimension(R.dimen.line_width)
-        strokePaint.color = res.getColor(R.color.blue)
+        strokePaint.color = strokePaintColor
         //
         fillPaint = Paint()
         fillPaint.style = Paint.Style.FILL
         fillPaint.isAntiAlias = true
-        fillPaint.color = res.getColor(R.color.white)
+        fillPaint.color = fillPaintColor
     }
     
     fun test() {
@@ -110,8 +115,8 @@ class LineChartView : View {
         data5.value = 15
         data5.des = "15s"
         var data6 = DataEntity(5)
-        data6.value = 72
-        data6.des = "72s"
+        data6.value = 68
+        data6.des = "68s"
         var data7 = DataEntity(6)
         data7.value = 40
         data7.des = "40s"
@@ -205,4 +210,10 @@ class LineChartView : View {
         }
     }
 
+    private fun getStuffFromXml(attributeSet: AttributeSet?) {
+        var ta = context.obtainStyledAttributes(attributeSet, R.styleable.LineChartView)
+        linePaintColor = ContextCompat.getColor(context, ta.getResourceId(R.styleable.LineChartView_lcv_chart_line_color, R.color.login_solid_color))
+        strokePaintColor = ContextCompat.getColor(context, ta.getResourceId(R.styleable.LineChartView_lcv_chart_outer_circle_color, R.color.login_solid_color))
+        fillPaintColor = ContextCompat.getColor(context, ta.getResourceId(R.styleable.LineChartView_lcv_chart_inner_circle_color, R.color.white))
+    }
 }
