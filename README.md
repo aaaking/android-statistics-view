@@ -9,13 +9,13 @@
 
 依赖方式：
 
-####gradle：
+#### gradle：
 
 ```
 compile 'com.statistics.library:library:1.0.0'
 ```
 
-####maven：
+#### maven：
 
 ```
 <dependency>
@@ -26,7 +26,7 @@ compile 'com.statistics.library:library:1.0.0'
 </dependency>
 ```
 
-####Ivy：
+#### Ivy：
 
 ```
 <dependency org='com.statistics.library' name='library' rev='1.0.0'>
