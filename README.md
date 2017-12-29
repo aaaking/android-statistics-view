@@ -10,11 +10,13 @@
 依赖方式：
 
 ####gradle：
+
 ```
 compile 'com.statistics.library:library:1.0.0'
 ```
 
 ####maven：
+
 ```
 <dependency>
   <groupId>com.statistics.library</groupId>
@@ -25,6 +27,7 @@ compile 'com.statistics.library:library:1.0.0'
 ```
 
 ####Ivy：
+
 ```
 <dependency org='com.statistics.library' name='library' rev='1.0.0'>
   <artifact name='library' ext='pom' ></artifact>
