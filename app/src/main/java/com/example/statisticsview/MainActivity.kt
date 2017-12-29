@@ -38,6 +38,8 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         val navigationView = findViewById<View>(R.id.nav_view) as NavigationView
         navigationView.setNavigationItemSelectedListener(this)
         line_chart_view.startAnim()
+        line_chart_view2.startAnim()
+        line_chart_view3.startAnim()
     }
 
     override fun onBackPressed() {

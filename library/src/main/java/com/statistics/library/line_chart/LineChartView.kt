@@ -24,8 +24,11 @@ import java.util.concurrent.TimeUnit
  */
 val VALUE_RESIDUAL = 5
 var VERTICAL_PART_VALUE = 10//垂直每段的值
-var TAG = "MiExToast"
+var DOT_SHAPE_CIRCLE = 0
+var DOT_SHAPE_TRIANGLE = 1
+var DOT_SHAPE_RECTANGLE = 2
 class LineChartView : View {
+    var dotShape = DOT_SHAPE_CIRCLE//0 circle, 1 triangle, 2 rectangle
     var verticalStartValue = -5//垂直的最小值
     var verticalEndValue = 78//垂直的最大值
     var verticalParts = 5//垂直的段数
@@ -220,6 +223,7 @@ class LineChartView : View {
         line_width = ta.getDimensionPixelOffset(R.styleable.LineChartView_lcv_line_width, res.getDimensionPixelOffset(R.dimen.line_width))
         stroke_width = ta.getDimensionPixelOffset(R.styleable.LineChartView_lcv_stroke_width, res.getDimensionPixelOffset(R.dimen.stroke_width))
         textSize = ta.getDimensionPixelOffset(R.styleable.LineChartView_lcv_text_size, res.getDimensionPixelOffset(R.dimen.frame_text_size))
+        dotShape = ta.getInteger(R.styleable.LineChartView_lcv_dot_shape, DOT_SHAPE_CIRCLE)
     }
 
     /*

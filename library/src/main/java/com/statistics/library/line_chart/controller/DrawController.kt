@@ -1,9 +1,11 @@
 package com.statistics.library.line_chart.controller
 
 import android.graphics.Canvas
-import com.statistics.library.line_chart.LineChartView
-import com.statistics.library.line_chart.VERTICAL_PART_VALUE
+import android.graphics.Path
+import android.graphics.Point
+import com.statistics.library.line_chart.*
 import com.statistics.library.line_chart.data.AnimEntity
+
 
 /**
  * Created by 周智慧 on 28/12/2017.
@@ -105,11 +107,52 @@ class DrawController(var mView: LineChartView) {
     }
 
     private fun drawChart(canvas: Canvas, startX: Int, startY: Int, stopX: Int, stopY: Int, alpha: Int, position: Int) {
-        val radius = mView.radius
-        val inerRadius = mView.inerRadius
+        val radius = mView.radius.toFloat()
+        val inerRadius = mView.inerRadius.toFloat()
         mView.strokePaint.setAlpha(alpha)
         canvas.drawLine(startX.toFloat(), startY.toFloat(), stopX.toFloat(), stopY.toFloat(), mView.linePaint)
-        canvas.drawCircle(startX.toFloat(), startY.toFloat(), radius.toFloat(), mView.strokePaint)
-        canvas.drawCircle(startX.toFloat(), startY.toFloat(), inerRadius.toFloat(), mView.fillPaint)
+        if (mView.dotShape == DOT_SHAPE_CIRCLE) {
+            canvas.drawCircle(startX.toFloat(), startY.toFloat(), radius, mView.strokePaint)//外
+            canvas.drawCircle(startX.toFloat(), startY.toFloat(), inerRadius, mView.fillPaint)//内
+        } else if (mView.dotShape == DOT_SHAPE_TRIANGLE) {
+            var longEdge = radius * Math.cos(Math.toRadians(30.0))
+            var shortEdge = radius * Math.sin(Math.toRadians(30.0))
+            var point1 = Point((startX - longEdge).toInt(), (startY + shortEdge).toInt())
+            var point2 = Point((startX - 0).toInt(), (startY - longEdge).toInt())
+            var point3 = Point((startX + longEdge).toInt(), (startY + shortEdge).toInt())
+            var path = Path()
+            path.moveTo(point1.x.toFloat(), point1.y.toFloat())
+            path.lineTo(point2.x.toFloat(), point2.y.toFloat())
+            path.moveTo(point2.x.toFloat(), point2.y.toFloat())
+            path.lineTo(point3.x.toFloat(), point3.y.toFloat())
+            path.moveTo(point3.x.toFloat(), point3.y.toFloat())
+            path.lineTo(point1.x.toFloat(), point1.y.toFloat())
+            path.close()
+            canvas.drawPath(path, mView.strokePaint) //外
+            var longEdgeInner = inerRadius * Math.cos(Math.toRadians(30.0))
+            var shortEdgeInner = inerRadius * Math.sin(Math.toRadians(30.0))
+            var point1Inner = Point((startX - longEdgeInner).toInt(), (startY + shortEdgeInner).toInt())
+            var point2Inner = Point((startX - 0).toInt(), (startY - longEdgeInner).toInt())
+            var point3Inner = Point((startX + longEdgeInner).toInt(), (startY + shortEdgeInner).toInt())
+            var path2Inner = Path()
+            path2Inner.setFillType(Path.FillType.EVEN_ODD)
+            path2Inner.moveTo(point1Inner.x.toFloat(), point1Inner.y.toFloat())
+            path2Inner.lineTo(point2Inner.x.toFloat(), point2Inner.y.toFloat())
+            path2Inner.lineTo(point3Inner.x.toFloat(), point3Inner.y.toFloat())
+            path2Inner.lineTo(point1Inner.x.toFloat(), point1Inner.y.toFloat())
+            path2Inner.close()
+            canvas.drawPath(path2Inner, mView.fillPaint)//内
+        } else if (mView.dotShape == DOT_SHAPE_RECTANGLE) {
+            var left = startX - radius
+            var top = startY - radius
+            var right = startX + radius
+            var bottom = startY + radius
+            canvas.drawRect(left, top, right, bottom, mView.strokePaint)//外
+            left = startX - inerRadius
+            top = startY - inerRadius
+            right = startX + inerRadius
+            bottom = startY + inerRadius
+            canvas.drawRect(left, top, right, bottom, mView.fillPaint)//内
+        }
     }
 }

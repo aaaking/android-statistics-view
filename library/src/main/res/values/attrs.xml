@@ -9,5 +9,6 @@
         <attr name="lcv_line_width" format="dimension|reference"/>
         <attr name="lcv_stroke_width" format="dimension|reference"/>
         <attr name="lcv_text_size" format="dimension|reference"/>
+        <attr name="lcv_dot_shape" format="integer"/>
     </declare-styleable>
 </resources>
