@@ -19,7 +19,7 @@ val PROPERTY_ALPHA = "PROPERTY_ALPHA"
 val VALUE_NONE = -1
 val ALPHA_START = 0
 val ALPHA_END = 255
-private val ANIMATION_DURATION = 240
+private val ANIMATION_DURATION = 300
 class AnimController(view: LineChartView) {
     var mView: WeakReference<LineChartView>? = WeakReference<LineChartView>(view)
     var animatorSet: AnimatorSet = AnimatorSet()
@@ -54,21 +54,21 @@ class AnimController(view: LineChartView) {
         }
         val value = AnimEntity(valueAnimator.getAnimatedValue(PROPERTY_X) as Int, valueAnimator.getAnimatedValue(PROPERTY_Y) as Int)
         value.alpha = valueAnimator.getAnimatedValue(PROPERTY_ALPHA) as Int
-        value.runningAnimationPosition = getRunningAnimationPosition()
+        value.runningAnimIndex = getRunningAnimIndex()
         mView?.get()?.onAnimationUpdated(value)//使用弱引用，否则这里可能内存泄漏
-//        if (value.runningAnimationPosition <= 1) {
-//            Log.i(TAG, "value.runningAnimationPosition: ${value.runningAnimationPosition}   value.alpha: ${value.alpha}  value.x: ${value.x}")
+//        if (value.runningAnimIndex <= 1) {
+//            Log.i(TAG, "value.runningAnimIndex: ${value.runningAnimIndex}   value.alpha: ${value.alpha}  value.x: ${value.x}")
 //            /*
-//            * MiExToast: value.runningAnimationPosition: 0   value.alpha: 254  value.x: 259
-//              MiExToast: value.runningAnimationPosition: 0   value.alpha: 255  value.x: 260
-//              MiExToast: value.runningAnimationPosition: 0   value.alpha: 0  value.x: 260
-//              MiExToast: value.runningAnimationPosition: 1   value.alpha: 0  value.x: 260
-//              MiExToast: value.runningAnimationPosition: 1   value.alpha: 0  value.x: 260
+//            * MiExToast: value.runningAnimIndex: 0   value.alpha: 254  value.x: 259
+//              MiExToast: value.runningAnimIndex: 0   value.alpha: 255  value.x: 260
+//              MiExToast: value.runningAnimIndex: 0   value.alpha: 0  value.x: 260
+//              MiExToast: value.runningAnimIndex: 1   value.alpha: 0  value.x: 260
+//              MiExToast: value.runningAnimIndex: 1   value.alpha: 0  value.x: 260
 //            * */
 //        }
     }
 
-    private fun getRunningAnimationPosition(): Int {
+    private fun getRunningAnimIndex(): Int {
         val childAnimations = animatorSet.childAnimations
         for (i in childAnimations.indices) {
             val animator = childAnimations[i]

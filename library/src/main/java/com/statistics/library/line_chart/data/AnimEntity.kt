@@ -5,5 +5,5 @@ package com.statistics.library.line_chart.data
  */
 data class AnimEntity(var x: Int, var y: Int) {
     var alpha: Int = 0
-    var runningAnimationPosition: Int = 0
+    var runningAnimIndex: Int = 0
 }

@@ -72,12 +72,12 @@ class DrawController(var mView: LineChartView) {
     }
 
     private fun drawChart(canvas: Canvas) {
-        val runningAnimationPosition = animValue?.runningAnimationPosition ?: VALUE_NONE
-        for (i in 0 until runningAnimationPosition) {
+        val runningAnimIndex = animValue?.runningAnimIndex ?: VALUE_NONE
+        for (i in 0 until runningAnimIndex) {
             drawChart(canvas, i, false)
         }
-        if (runningAnimationPosition > VALUE_NONE) {
-            drawChart(canvas, runningAnimationPosition, true)
+        if (runningAnimIndex > VALUE_NONE) {
+            drawChart(canvas, runningAnimIndex, true)
         }
     }
 
