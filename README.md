@@ -1,6 +1,6 @@
 # android-statistics-view
 <center>
-	![](general.gif)
+	![](https://github.com/aaaking/android-statistics-view/blob/master/general.gif)
 </center>
 
 在工作之余写了个自定义View的开源项目，效果如上图所示。
