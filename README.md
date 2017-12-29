@@ -1,7 +1,5 @@
 # android-statistics-view
 
-<div style="text-align:center align="center""><img src ="general.gif" /></div>
-
 <p align="center">
   <img src ="general.gif" />
 </p>
