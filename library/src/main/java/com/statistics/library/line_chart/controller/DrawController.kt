@@ -13,10 +13,10 @@ import com.statistics.library.line_chart.data.AnimEntity
 class DrawController(var mView: LineChartView) {
     var animValue: AnimEntity? = null
     fun draw(canvas: Canvas) {
-        drawFrameLines(canvas = canvas)
-        drawVerticalChart(canvas)
-        drawHorizontalChart(canvas)
-        drawChart(canvas)
+        drawFrameLines(canvas = canvas)//绘制x、y坐标轴
+        drawVerticalChart(canvas)//绘制垂直文案，
+        drawHorizontalChart(canvas)//绘制水平文案，
+        drawChart(canvas)//绘制折线和大小圆圈，
     }
 
     private fun drawFrameLines(canvas: Canvas) {
