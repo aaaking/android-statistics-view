@@ -17,7 +17,6 @@ import com.statistics.library.line_chart.util.getCoordinateX
 import com.statistics.library.line_chart.util.getCoordinateY
 import com.statistics.library.line_chart.util.getRightValue
 import com.statistics.library.line_chart.util.max
-import java.util.concurrent.TimeUnit
 
 /**
  * Created by 周智慧 on 27/12/2017.
@@ -61,7 +60,6 @@ class LineChartView : View {
     }
 
     fun init(context: Context, attributeSet: AttributeSet?, defStyleAttr: Int) {
-        test()
         val res = context.resources
         getStuffFromXml(attributeSet, res)
         mDrawController = DrawController(this)
@@ -99,51 +97,6 @@ class LineChartView : View {
         fillPaint.style = Paint.Style.FILL
         fillPaint.isAntiAlias = true
         fillPaint.color = fillPaintColor
-    }
-    
-    fun test() {
-        var data1 = DataEntity(0)
-        data1.value = 10
-        data1.des = "10s"
-        var data2 = DataEntity(1)
-        data2.value = 25
-        data2.des = "25s"
-        var data3 = DataEntity(2)
-        data3.value = 20
-        data3.des = "20s"
-        var data4 = DataEntity(3)
-        data4.value = 30
-        data4.des = "30s"
-        var data5 = DataEntity(4)
-        data5.value = 15
-        data5.des = "15s"
-        var data6 = DataEntity(5)
-        data6.value = 68
-        data6.des = "68s"
-        var data7 = DataEntity(6)
-        data7.value = 40
-        data7.des = "40s"
-        var data8 = DataEntity(7)
-        data8.value = 45
-        data8.des = "45s"
-        mDatas.add(data1)
-        mDatas.add(data2)
-        mDatas.add(data3)
-        mDatas.add(data4)
-        mDatas.add(data5)
-        mDatas.add(data6)
-        mDatas.add(data7)
-        mDatas.add(data8)
-        var currMillis = System.currentTimeMillis()
-        val daysMillis = TimeUnit.DAYS.toMillis(1)
-        val temp = currMillis % daysMillis
-        currMillis -= temp
-        for (i in mDatas.indices) {
-            val position = (mDatas.size - 1 - i).toLong()
-            val offsetMillis = TimeUnit.DAYS.toMillis(position)
-            val millis = currMillis - offsetMillis
-            mDatas.get(i).millis = (millis)
-        }
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
