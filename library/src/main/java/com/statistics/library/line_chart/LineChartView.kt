@@ -43,14 +43,14 @@ class LineChartView : View {
     var inerRadius: Int = 0//小圆半径
     var line_width: Int = 0//线宽度
     var stroke_width: Int = 0//线宽度
-    lateinit var frameTextPaint: Paint
-    lateinit var frameLinePaint: Paint
-    lateinit var frameInternalPaint: Paint
-    lateinit var linePaint: Paint
+    lateinit var frameTextPaint: Paint//文字画笔
+    lateinit var frameLinePaint: Paint//横纵坐标画笔
+    lateinit var frameInternalPaint: Paint//间隔线画笔
+    lateinit var linePaint: Paint//折线画笔
     var linePaintColor: Int = 0
-    lateinit var strokePaint: Paint
+    lateinit var strokePaint: Paint//大圆画笔
     var strokePaintColor: Int = 0
-    lateinit var fillPaint: Paint
+    lateinit var fillPaint: Paint//小圆画笔
     var fillPaintColor: Int = 0
     @JvmOverloads constructor(context: Context) : this(context, null)
     @JvmOverloads constructor(context: Context, attributeSet: AttributeSet?) : this(context, attributeSet, 0)
