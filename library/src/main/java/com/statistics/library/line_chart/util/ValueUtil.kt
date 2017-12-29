@@ -19,24 +19,6 @@ fun max(dataList: List<DataEntity>?): Int {
 }
 
 fun getRightValue(value: Int): Int {
-//    var result = value
-//    if (isRightValue(value)) {
-//        return result
-//    }
-//    if (value > VERTICAL_PART_VALUE) {
-//        (value downTo VERTICAL_PART_VALUE)
-//                .filter { isRightValue(it) }
-//                .forEach { return it }
-//    } else if (value < VERTICAL_PART_VALUE) {
-//        (value..VERTICAL_PART_VALUE)
-//                .filter { isRightValue(it) }
-//                .forEach { return it }
-//    }
-//    return result
-//    (value..(value * 2))
-//            .filter { isRightValue(it) }
-//            .forEach { return it }
-//    return value
     var temp = value
     while (!isRightValue(temp)) {
         temp++
