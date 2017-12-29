@@ -221,4 +221,25 @@ class LineChartView : View {
         stroke_width = ta.getDimensionPixelOffset(R.styleable.LineChartView_lcv_stroke_width, res.getDimensionPixelOffset(R.dimen.stroke_width))
         textSize = ta.getDimensionPixelOffset(R.styleable.LineChartView_lcv_text_size, res.getDimensionPixelOffset(R.dimen.frame_text_size))
     }
+
+    /*
+        MiExToast: chartview setData
+        MiExToast: chartview onAttachedToWindow
+        MiExToast: chartview onMeasure
+        MiExToast: chartview onMeasure
+        MiExToast: chartview animate
+        MiExToast: chartview onDraw
+    * */
+    override fun onAttachedToWindow() {
+        super.onAttachedToWindow()
+    }
+
+    override fun onDetachedFromWindow() {
+        super.onDetachedFromWindow()
+        mAnimController.animatorSet.removeAllListeners()
+        mAnimController.animatorSet.cancel()
+        mAnimController.animatorSet.end()
+        clearAnimation()
+        mAnimController.mView = null
+    }
 }

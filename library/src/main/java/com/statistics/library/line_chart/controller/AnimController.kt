@@ -21,11 +21,11 @@ val ALPHA_START = 0
 val ALPHA_END = 255
 private val ANIMATION_DURATION = 240
 class AnimController(view: LineChartView) {
-    var mView: WeakReference<LineChartView> = WeakReference<LineChartView>(view)
+    var mView: WeakReference<LineChartView>? = WeakReference<LineChartView>(view)
     var animatorSet: AnimatorSet = AnimatorSet()
 
     fun animate() {
-        this.animatorSet.playSequentially(mView.get()?.mDatas?.map { createAnimator(it) })
+        this.animatorSet.playSequentially(mView?.get()?.mDatas?.map { createAnimator(it) })
         animatorSet.start()
     }
 
@@ -33,11 +33,9 @@ class AnimController(view: LineChartView) {
         var duration = ANIMATION_DURATION.toLong()
         if (drawData.stopX <= -1) {
             drawData.stopX = drawData.startX
-//            duration = 0
         }
         if (drawData.stopY <= -1) {
             drawData.stopY = drawData.startY
-//            duration = 0
         }
         val propertyX = PropertyValuesHolder.ofInt(PROPERTY_X, drawData.startX, drawData.stopX)
         val propertyY = PropertyValuesHolder.ofInt(PROPERTY_Y, drawData.startY, drawData.stopY)
@@ -57,7 +55,7 @@ class AnimController(view: LineChartView) {
         val value = AnimEntity(valueAnimator.getAnimatedValue(PROPERTY_X) as Int, valueAnimator.getAnimatedValue(PROPERTY_Y) as Int)
         value.alpha = valueAnimator.getAnimatedValue(PROPERTY_ALPHA) as Int
         value.runningAnimationPosition = getRunningAnimationPosition()
-        mView.get()?.onAnimationUpdated(value)//使用弱引用，否则这里可能内存泄漏
+        mView?.get()?.onAnimationUpdated(value)//使用弱引用，否则这里可能内存泄漏
 //        if (value.runningAnimationPosition <= 1) {
 //            Log.i(TAG, "value.runningAnimationPosition: ${value.runningAnimationPosition}   value.alpha: ${value.alpha}  value.x: ${value.x}")
 //            /*
