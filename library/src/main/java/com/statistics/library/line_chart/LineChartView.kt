@@ -55,7 +55,6 @@ class LineChartView : View {
     @JvmOverloads constructor(context: Context) : this(context, null)
     @JvmOverloads constructor(context: Context, attributeSet: AttributeSet?) : this(context, attributeSet, 0)
     @JvmOverloads constructor(context: Context, attributeSet: AttributeSet?, defStyleAttr: Int) : super(context, attributeSet, defStyleAttr) {
-        setBackgroundColor(Color.WHITE)
         init(context, attributeSet, defStyleAttr)
     }
 
