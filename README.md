@@ -1,7 +1,9 @@
 # android-statistics-view
-<center>
-	![](general.gif)
-</center>
+
+<p align="center">
+  <img src ="general.gif" />
+</p>
+
 
 在工作之余写了个自定义View的开源项目，效果如上图所示。
 
