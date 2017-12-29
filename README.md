@@ -1,7 +1,10 @@
 # android-statistics-view
-<center>
-	![](https://github.com/aaaking/android-statistics-view/blob/master/general.gif)
-</center>
+
+
+![image](general.gif)
+
+<div style="text-align:center"><img src ="general.gif" /></div>
+
 
 在工作之余写了个自定义View的开源项目，效果如上图所示。
 
