@@ -23,11 +23,11 @@ import java.util.concurrent.TimeUnit
  * Created by 周智慧 on 27/12/2017.
  */
 val VALUE_RESIDUAL = 5
-var VERTICAL_PART_VALUE = 10//垂直每段的值
 var DOT_SHAPE_CIRCLE = 0
 var DOT_SHAPE_TRIANGLE = 1
 var DOT_SHAPE_RECTANGLE = 2
 class LineChartView : View {
+    var VERTICAL_PART_VALUE = 10//垂直每段的值
     var dotShape = DOT_SHAPE_CIRCLE//0 circle, 1 triangle, 2 rectangle
     var verticalStartValue = -5//垂直的最小值
     var verticalEndValue = 78//垂直的最大值

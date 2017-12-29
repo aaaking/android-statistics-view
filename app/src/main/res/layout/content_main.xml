@@ -37,7 +37,7 @@
         app:lcv_stroke_width="1dp"
         app:lcv_text_size="10dp"
         app:lcv_dot_shape="1"
-        android:layout_height="140dp"/>
+        android:layout_height="200dp"/>
 
     <com.statistics.library.line_chart.LineChartView
         android:layout_margin="5dp"
@@ -45,10 +45,10 @@
         android:layout_width="match_parent"
         app:lcv_chart_outer_circle_color="@android:color/holo_green_dark"
         app:lcv_chart_line_color="@android:color/holo_green_dark"
-        app:lcv_radius="2dp"
-        app:lcv_inner_radius="2dp"
+        app:lcv_radius="6dp"
+        app:lcv_inner_radius="6dp"
         app:lcv_line_width="1dp"
-        app:lcv_stroke_width="1dp"
+        app:lcv_stroke_width="2dp"
         app:lcv_text_size="10dp"
         app:lcv_dot_shape="2"
         android:layout_height="140dp"/>

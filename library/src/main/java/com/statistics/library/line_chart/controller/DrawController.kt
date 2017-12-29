@@ -48,7 +48,7 @@ class DrawController(var mView: LineChartView) {
             //绘制垂直文本
             canvas.drawText(title, mView.padding.toFloat(), titleY.toFloat(), mView.frameTextPaint)
             currHeight -= partHeight
-            currTitle += VERTICAL_PART_VALUE
+            currTitle += mView.VERTICAL_PART_VALUE
         }
     }
 
