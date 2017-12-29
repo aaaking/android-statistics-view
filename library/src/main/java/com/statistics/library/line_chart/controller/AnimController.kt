@@ -71,6 +71,9 @@ class AnimController(view: LineChartView) {
 //        }
     }
 
+    /**
+     * 获取当前正在执行的动画的index，这里有个坑，这个动画临界结束的时候，这个动画的属性值会被下个即将开始的动画的属性值代替掉
+     */
     private fun getRunningAnimIndex(): Int {
         val childAnimations = animatorSet.childAnimations
         for (i in childAnimations.indices) {
