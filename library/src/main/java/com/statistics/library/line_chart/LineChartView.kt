@@ -1,6 +1,7 @@
 package com.statistics.library.line_chart
 
 import android.content.Context
+import android.content.res.Resources
 import android.graphics.Canvas
 import android.graphics.Color
 import android.graphics.Paint
@@ -38,6 +39,8 @@ class LineChartView : View {
     var textSize: Int = 0
     var radius: Int = 0//大圆半径
     var inerRadius: Int = 0//小圆半径
+    var line_width: Int = 0//线宽度
+    var stroke_width: Int = 0//线宽度
     lateinit var frameTextPaint: Paint
     lateinit var frameLinePaint: Paint
     lateinit var frameInternalPaint: Paint
@@ -57,14 +60,11 @@ class LineChartView : View {
     fun init(context: Context, attributeSet: AttributeSet?, defStyleAttr: Int) {
         test()
         val res = context.resources
-        getStuffFromXml(attributeSet)
+        getStuffFromXml(attributeSet, res)
         mDrawController = DrawController(this)
         mAnimController = AnimController(this)
         heightOffset = (res.getDimension(R.dimen.radius) + res.getDimension(R.dimen.line_width)).toInt()
         padding = res.getDimension(R.dimen.frame_padding).toInt()
-        textSize = res.getDimension(R.dimen.frame_text_size).toInt()
-        radius = res.getDimension(R.dimen.radius).toInt()
-        inerRadius = res.getDimension(R.dimen.iner_radius).toInt()
         //
         frameTextPaint = Paint()
         frameTextPaint.isAntiAlias = true
@@ -83,13 +83,13 @@ class LineChartView : View {
         //
         linePaint = Paint()
         linePaint.isAntiAlias = true
-        linePaint.strokeWidth = res.getDimension(R.dimen.line_width)
+        linePaint.strokeWidth = line_width.toFloat()
         linePaint.color = linePaintColor
         //
         strokePaint = Paint()
         strokePaint.style = Paint.Style.STROKE
         strokePaint.isAntiAlias = true
-        strokePaint.strokeWidth = res.getDimension(R.dimen.line_width)
+        strokePaint.strokeWidth = stroke_width.toFloat()
         strokePaint.color = strokePaintColor
         //
         fillPaint = Paint()
@@ -210,10 +210,15 @@ class LineChartView : View {
         }
     }
 
-    private fun getStuffFromXml(attributeSet: AttributeSet?) {
+    private fun getStuffFromXml(attributeSet: AttributeSet?, res: Resources) {
         var ta = context.obtainStyledAttributes(attributeSet, R.styleable.LineChartView)
         linePaintColor = ContextCompat.getColor(context, ta.getResourceId(R.styleable.LineChartView_lcv_chart_line_color, R.color.login_solid_color))
         strokePaintColor = ContextCompat.getColor(context, ta.getResourceId(R.styleable.LineChartView_lcv_chart_outer_circle_color, R.color.login_solid_color))
         fillPaintColor = ContextCompat.getColor(context, ta.getResourceId(R.styleable.LineChartView_lcv_chart_inner_circle_color, R.color.white))
+        radius = ta.getDimensionPixelOffset(R.styleable.LineChartView_lcv_radius, res.getDimensionPixelOffset(R.dimen.radius))
+        inerRadius = ta.getDimensionPixelOffset(R.styleable.LineChartView_lcv_inner_radius, res.getDimensionPixelOffset(R.dimen.iner_radius))
+        line_width = ta.getDimensionPixelOffset(R.styleable.LineChartView_lcv_line_width, res.getDimensionPixelOffset(R.dimen.line_width))
+        stroke_width = ta.getDimensionPixelOffset(R.styleable.LineChartView_lcv_stroke_width, res.getDimensionPixelOffset(R.dimen.stroke_width))
+        textSize = ta.getDimensionPixelOffset(R.styleable.LineChartView_lcv_text_size, res.getDimensionPixelOffset(R.dimen.frame_text_size))
     }
 }

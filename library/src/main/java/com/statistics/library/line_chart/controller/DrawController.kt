@@ -34,7 +34,7 @@ class DrawController(var mView: LineChartView) {
         var currHeight = verticalLineHeight
         var currTitle = mView.verticalStartValue
         for (i in 0..mView.verticalParts) {
-            var titleY = currHeight
+            var titleY = currHeight + mView.textSize / 3
             if (mView.textSize + mView.heightOffset > currHeight) {
                 titleY = currHeight + mView.textSize - mView.TEXT_SIZE_OFFSET
             }
@@ -63,6 +63,7 @@ class DrawController(var mView: LineChartView) {
                 dateWidth / 2
             } else {
                 dateWidth / 2 + 10//最后一个文案向左多偏移一些
+                //(dateWidth * 13 / 16f).toInt()//最后一个文案向左多偏移一些
             }
             canvas.drawText(date, x.toFloat(), mView.height.toFloat(), mView.frameTextPaint)
         }
