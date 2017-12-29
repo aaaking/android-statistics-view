@@ -1,9 +1,10 @@
 # android-statistics-view
 
+<div style="text-align:center align="center""><img src ="general.gif" /></div>
 
-![image](general.gif)
-
-<div style="text-align:center"><img src ="general.gif" /></div>
+<p align="center">
+  <img src ="general.gif" />
+</p>
 
 
 在工作之余写了个自定义View的开源项目，效果如上图所示。
