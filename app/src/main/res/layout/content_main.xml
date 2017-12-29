@@ -12,7 +12,6 @@
     <com.statistics.library.line_chart.LineChartView
         android:id="@+id/line_chart_view"
         android:layout_width="match_parent"
-        app:lcv_chart_inner_circle_color="@android:color/holo_blue_bright"
         app:lcv_chart_outer_circle_color="@android:color/holo_red_light"
         app:lcv_chart_line_color="@android:color/holo_red_light"
         android:layout_height="500dp"/>
