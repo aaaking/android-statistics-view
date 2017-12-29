@@ -42,10 +42,12 @@ class MainActivity : AppCompatActivity(), NavigationView.OnNavigationItemSelecte
         line_chart_view.verticalParts = 4
         line_chart_view.setData(test1())
         line_chart_view.startAnim()
-        line_chart_view2.verticalStartValue = 50
-        line_chart_view2.verticalParts = 6
+
+        line_chart_view2.verticalStartValue = 50//纵坐标的起始值，默认-5
+        line_chart_view2.verticalParts = 6//纵坐标的段数，默认5
         line_chart_view2.setData(test2())
         line_chart_view2.startAnim()
+
         line_chart_view3.verticalStartValue = 0
         line_chart_view3.setData(test3())
         line_chart_view3.startAnim()
