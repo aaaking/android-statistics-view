@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <declare-styleable name="LineChartView">
+        <attr name="lcv_chart_line_color" format="color|reference"/>
+        <attr name="lcv_chart_outer_circle_color" format="color|reference"/>
+        <attr name="lcv_chart_inner_circle_color" format="color|reference"/>
+        <attr name="lcv_radius" format="dimension|reference"/>
+        <attr name="lcv_inner_radius" format="dimension|reference"/>
+        <attr name="lcv_line_width" format="dimension|reference"/>
+        <attr name="lcv_stroke_width" format="dimension|reference"/>
+        <attr name="lcv_text_size" format="dimension|reference"/>
+        <attr name="lcv_dot_shape" format="integer"/>
+    </declare-styleable>
+</resources>
