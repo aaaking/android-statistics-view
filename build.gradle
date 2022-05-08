@@ -3,6 +3,8 @@ ext {
     compileSdkVer = 32
     targetSdk = 26
     minSdk = 14
+    appcompat = '1.2.0'
+    material = '1.2.1'
 }
 
 buildscript {
