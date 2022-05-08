@@ -9,10 +9,10 @@ def gitUrl = 'https://github.com/aaaking/android-statistics-view.git'
 group = "com.statistics.library"
 
 android {
-    compileSdkVersion 32
+    compileSdkVersion compileSdkVer
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 29
+        minSdkVersion minSdk
+        targetSdkVersion rootProject.ext.targetSdk
         versionCode 1
         versionName "1.0"
 
